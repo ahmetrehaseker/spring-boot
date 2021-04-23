@@ -92,4 +92,13 @@ gradlePlugin {
 
 test {
 	useJUnitPlatform()
+	systemProperty 'thundra.apikey', '****'
+	systemProperty 'thundra.agent.application.name', 'spring-boot'
+	systemProperty 'thundra.agent.report.rest.baseurl', 'https://api-lab.thundra.io/v1'
+	systemProperty 'thundra.agent.broker.enable', 'false'
 }
+
+tasks.named('test') {
+    jvmArgs += '-javaagent:../thundra-agent-bootstrap.jar'
+}
+
