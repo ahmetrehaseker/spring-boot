@@ -92,4 +92,9 @@ gradlePlugin {
 
 test {
 	useJUnitPlatform()
+	outputs.upToDateWhen {false}
+}
+
+tasks.named('test') {
+    jvmArgs += '-javaagent:../thundra-agent-bootstrap.jar'
 }

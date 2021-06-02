@@ -150,3 +150,12 @@ compileTestKotlin {
 compileJava {
 	doLast new org.springframework.boot.build.log4j2.ReproducibleLog4j2PluginsDatAction()
 }
+
+test {
+	useJUnitPlatform()
+	outputs.upToDateWhen {false}
+}
+
+tasks.named('test') {
+	jvmArgs += '-javaagent:../../thundra-agent-bootstrap.jar'
+}
